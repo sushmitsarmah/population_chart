@@ -20,3 +20,9 @@
 ### rename to world_map.json
 
     cp ne_110m_admin_0_countries/ne_110m_admin_0_countries.json data/world_map.json
+
+### start a server
+
+    python -m SimpleHTTPServer
+
+    Visit http://localhost:8000 in your browser
