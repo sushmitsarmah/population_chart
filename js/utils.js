@@ -3,10 +3,22 @@
     const constants = win.chart.constants;
     const margins = constants.margins;
 
-    utils.eventStream = new rxjs.Subject();
-
     utils.valueFormat = d3.format(',.0f');
     utils.yearFormat = d3.timeFormat('%Y');
+
+    utils.initStream = () => {
+        utils.eventStream = new rxjs.Subject();
+    };
+
+    utils.getMaxPopulation = (populationData) => {
+        // get the maximum population value. For legend
+        const allValues = _.chain(populationData)
+            .map(d => d.years.map(k => k.value))
+            .flatten()
+            .value();
+
+        return d3.max(allValues);
+    };
 
     // parse the population data
     utils.parsePopData = row => {
