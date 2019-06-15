@@ -10,3 +10,23 @@
   stroke-linecap: round;
   pointer-events: none;
 }
+
+.chart-title {
+    font-size: 30px;
+}
+
+.sub-title {
+    font-size: 15px;
+}
+
+.chart-title .title-population {
+    font-weight: bold;
+}
+
+.chart-title .title-year {
+    /* font-size: 30px; */
+}
+
+.sidebar-chart .bar text {
+    font-size: 10px;
+}
