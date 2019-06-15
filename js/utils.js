@@ -1,17 +1,19 @@
 (async (win) => {
-    const utils = {};
     const constants = win.chart.constants;
     const margins = constants.margins;
+
+    const utils = {};
 
     utils.valueFormat = d3.format(',.0f');
     utils.yearFormat = d3.timeFormat('%Y');
 
+    // initialize year stream
     utils.initStream = () => {
         utils.eventStream = new rxjs.Subject();
     };
 
+    // get the maximum population value of data. For legend
     utils.getMaxPopulation = (populationData) => {
-        // get the maximum population value. For legend
         const allValues = _.chain(populationData)
             .map(d => d.years.map(k => k.value))
             .flatten()
@@ -30,7 +32,6 @@
         };
         constants.years.forEach(year => {
             const key = _.filter(keys, key => key.indexOf(year) !== -1)[0];
-            // newObj[year] = +row[key];
             const temp = {
                 year,
                 value: +row[key]
@@ -116,12 +117,7 @@
     utils.createScale = () => {
         const colorScale = d3.scaleThreshold()
             .range(constants.colors)
-            .domain([
-                5000000,
-                50000000,
-                100000000,
-                1354000000
-            ]);
+            .domain(constants.populationThresholds);
 
         const xScale = d3.scaleLinear()
             .range([0, constants.widthMargins]);
@@ -136,6 +132,7 @@
         };
     };
 
+    // add the legend
     utils.addLegend = (svg, colorScale, maxPopulationValue) => {
         const legend = svg.append('g')
             .attr('class', 'legend')
@@ -181,7 +178,6 @@
                     .join(' - ');
                 return value;
             });
-
     };
 
     win.chart.utils = utils;

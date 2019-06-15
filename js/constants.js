@@ -3,6 +3,7 @@
         mapLink: 'data/world_map.json',
         datasetLink: 'data/population_data.csv',
         root: '#chart',
+
         width: 1360,
         height: 750,
         margins: {
@@ -11,16 +12,22 @@
             right: 100,
             left: 100
         },
+    
         startYear: 1960,
         endYear: 2018,
         defaultYear: 2017,
+        numCountries: 25,
+        populationThresholds: [
+            5000000,
+            50000000,
+            100000000,
+            1354000000
+        ],
 
         legend: {
             xpos: 250,
             ypos: 750 * 0.65
         },
-
-        numCountries: 25,
 
         titleY: 20,
         sliderY: 60,

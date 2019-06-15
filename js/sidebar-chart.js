@@ -2,18 +2,18 @@
     const constants = win.chart.constants;
     const utils = win.chart.utils;
 
-    const valueFormat = d3.format(',.0f');
-
     const sidebar = {};
 
     let sidebarChart;
 
+    // create the sidebar chart initially
     sidebar.drawChart = (svg) => {
         sidebarChart = svg.append('g')
             .attr('class', 'sidebar-chart')
             .attr('transform', `translate(0, ${constants.sidebarY})`)
     };
 
+    // create the sidebar chart axis
     sidebar.createAxis = (yScale) => {
         const axis = d3.axisLeft(yScale);
 
@@ -25,6 +25,7 @@
             .call(axis);
     };
 
+    // update the sidebar chart on data change
     sidebar.updateChart = ({ data, colorScale, xScale, yScale }) => {
         const sidebarData = sidebarChart.selectAll('.bar')
             .data(data, d => d.country_code + d.value);
@@ -47,7 +48,7 @@
             .attr('x', d => xScale(d.value) + 5)
             .attr('y', yScale.bandwidth() / 2)
             .style('fill', d => colorScale(d.value))
-            .text(d => valueFormat(d.value / 1000000)); 
+            .text(d => utils.valueFormat(d.value / 1000000)); 
 
         sidebar.createAxis(yScale);
     };    
