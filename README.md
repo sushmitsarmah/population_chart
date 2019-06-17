@@ -49,3 +49,16 @@
     flask run
 
 5. Visit http://localhost:5000 in your browser
+
+
+### Heroku
+
+heroku login
+
+heroku create
+
+in heroku add heroku postgres
+
+copy postgres url and paste in code
+
+git push heroku master

@@ -4,7 +4,8 @@ import os
 import pandas as pd
 import json
 
-DATABASE_URL = 'postgresql://postgres:postgres@localhost/mariam'
+# DATABASE_URL = 'postgresql://postgres:postgres@localhost/mariam'
+DATABASE_URL = 'postgres://cpejdskelcflry:6b5a08674306200dfd12ea50e3da1c0607de44d91b9fd15f20a04ca4e197ba53@ec2-184-73-169-163.compute-1.amazonaws.com:5432/ddrkkh6i24bl0r'
 
 def create_app():
     app = Flask(
