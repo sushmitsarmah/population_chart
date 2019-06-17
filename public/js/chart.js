@@ -11,7 +11,10 @@
     const initChart = async () => {
         // get the data
         const worldMap = await d3.json(constants.mapLink);
-        const populationData = await d3.csv(constants.datasetLink, utils.parsePopData);
+        let populationData = await d3.json('/data');
+        populationData = utils.parsePopJsonData(populationData);
+        // reading data from csv file
+        // const populationData = await d3.csv(constants.datasetLink, utils.parsePopData);
 
         // create the svg
         const svg = d3.select(root)

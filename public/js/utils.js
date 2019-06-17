@@ -41,6 +41,27 @@
         return newObj;
     };
 
+    // parse the population data. (json from server)
+    utils.parsePopJsonData = data => {
+        return data.map(row => {
+            const keys = _.keys(row);
+            const newObj = {
+                country_code: row['country_code'],
+                country_name: row['country_name'],
+                years: []
+            };
+            constants.years.forEach(year => {
+                const key = _.filter(keys, key => key.indexOf(year) !== -1)[0];
+                const temp = {
+                    year,
+                    value: +row[key]
+                };
+                newObj.years.push(temp);
+            });
+            return newObj;
+        });
+    };
+
     // filter the data by year
     utils.filterDataByYear = (data, year) => {
         return _.map(data, d => {

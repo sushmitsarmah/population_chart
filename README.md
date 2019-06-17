@@ -26,3 +26,26 @@
     python -m SimpleHTTPServer
 
     Visit http://localhost:8000 in your browser
+
+### Db 
+
+1. create a database.
+
+    CREATE DATABASE mariam;
+
+2. create python environment
+
+    pip install virtualenv
+    virtualenv env
+    source env/bin/activate
+    pip install -r requirements.txt
+
+3. import data
+
+    python import_data.py
+
+4. run server
+
+    flask run
+
+5. Visit http://localhost:5000 in your browser
