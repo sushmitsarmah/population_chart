@@ -8,13 +8,19 @@
     const margins = constants.margins;
 
     // initially create the chart
-    const initChart = async () => {
+    const initChart = async (flask) => {
         // get the data
-        const worldMap = await d3.json(constants.mapLink);
-        let populationData = await d3.json('/data');
-        populationData = utils.parsePopJsonData(populationData);
-        // reading data from csv file
-        // const populationData = await d3.csv(constants.datasetLink, utils.parsePopData);
+        let worldMap;
+        let populationData;
+        if(flask) {
+            worldMap = await d3.json(constants.mapLink);
+            populationData = await d3.json('/data');
+            populationData = utils.parsePopJsonData(populationData);
+        } else {
+            // reading data from csv file
+            worldMap = await d3.json('public/' + constants.mapLink);
+            populationData = await d3.csv(constants.datasetLink, utils.parsePopData);
+        }
 
         // create the svg
         const svg = d3.select(root)

@@ -12,7 +12,7 @@ def create_app():
         __name__,
         static_folder='public',
         static_url_path='',
-        template_folder=''
+        template_folder='templates'
     )
     app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

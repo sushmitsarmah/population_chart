@@ -1,7 +1,7 @@
 ((win) => {
     const constants = {
         mapLink: 'data/world_map.json',
-        datasetLink: 'data/population_data.csv',
+        datasetLink: 'public/data/population_data.csv',
         root: '#chart',
 
         width: 1360,
